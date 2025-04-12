@@ -140,8 +140,14 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
- ;
+  : STRING
+  | INTEGER
+  | DECIMAL
+  | BOOLEAN
+  | BYTE_SIZE
+  | TIME_DURATION
+  ;
+
 
 ecommand
  : '!' Identifier
@@ -294,6 +300,18 @@ UnicodeEscape
 
 fragment
    HexDigit : ('0'..'9'|'a'..'f'|'A'..'F') ;
+// Units for byte size
+fragment BYTE_UNIT : ('B' | 'KB' | 'MB' | 'GB' | 'TB' | 'PB' | 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb');
+
+// Units for time
+fragment TIME_UNIT : ('ns' | 'us' | 'ms' | 's' | 'm' | 'h' | 'd');
+
+// Byte size: e.g., 10KB, 1.5MB
+BYTE_SIZE : DIGIT+ ('.' DIGIT+)? BYTE_UNIT;
+
+// Time duration: e.g., 100ms, 2.5s
+TIME_DURATION : DIGIT+ ('.' DIGIT+)? TIME_UNIT;
+
 
 Comment
  : ('//' ~[\r\n]* | '/*' .*? '*/' | '--' ~[\r\n]* ) -> skip
