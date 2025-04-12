@@ -321,20 +321,22 @@
     </resources>
     <plugins>
       <plugin>
-        <groupId>org.antlr</groupId>
-        <artifactId>antlr4-maven-plugin</artifactId>
-        <version>${antlr4-maven-plugin.version}</version>
-        <configuration>
-          <visitor>true</visitor>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>antlr4</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+  <groupId>org.antlr</groupId>
+  <artifactId>antlr4-maven-plugin</artifactId>
+  <version>4.9.2</version> <!-- 🔧 Set plugin version directly -->
+  <configuration>
+    <visitor>true</visitor>
+    <packageName>io.cdap.wrangler.parser</packageName> <!-- 🔧 Ensure correct package -->
+  </configuration>
+  <executions>
+    <execution>
+      <goals>
+        <goal>antlr4</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>buildnumber-maven-plugin</artifactId>
