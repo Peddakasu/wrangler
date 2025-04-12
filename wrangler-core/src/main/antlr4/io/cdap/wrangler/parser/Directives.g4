@@ -300,17 +300,16 @@ UnicodeEscape
 
 fragment
    HexDigit : ('0'..'9'|'a'..'f'|'A'..'F') ;
-// Units for byte size
-fragment BYTE_UNIT : ('B' | 'KB' | 'MB' | 'GB' | 'TB' | 'PB' | 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb');
+// ========== FRAGMENTS ==========
+fragment DIGIT : [0-9];
 
-// Units for time
+fragment BYTE_UNIT : ('B' | 'KB' | 'MB' | 'GB' | 'TB' | 'PB' | 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb');
 fragment TIME_UNIT : ('ns' | 'us' | 'ms' | 's' | 'm' | 'h' | 'd');
 
-// Byte size: e.g., 10KB, 1.5MB
-BYTE_SIZE : DIGIT+ ('.' DIGIT+)? BYTE_UNIT;
-
-// Time duration: e.g., 100ms, 2.5s
-TIME_DURATION : DIGIT+ ('.' DIGIT+)? TIME_UNIT;
+// ========== NEW TOKEN TYPES ==========
+BYTE_SIZE : DIGIT+ ('.' DIGIT+)? BYTE_UNIT ;
+TIME_DURATION : DIGIT+ ('.' DIGIT+)? TIME_UNIT ;
+;
 
 
 Comment
